@@ -1,4 +1,4 @@
-# web3.js-cheat-sheet
+# web3.js Cheat Sheet
 - https://www.npmjs.com/package/web3
 - https://github.com/web3/web3.js
 - https://web3js.org/
@@ -250,4 +250,63 @@ const eventTransfer = await uniswapToken.getPastEvents('Transfer', { fromBlock: 
 console.log(eventTransfer);
 // ↳ [{...},{...}, ...] array with all the events emitted
 //you can only query logs from the previous 100_000 blocks 
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br>
+<br><br>
+_________________________________________
+_________________________________________
+<br><br>
+<br><br>
+
+# Events
+
+<br><br>
+<br><br>
+
+## Listening to live events
+- You MUST initialize the Web3 provider with a WebSocket endpoint to subscribe to live events
+```javascript
+import { Web3 } from 'web3';
+
+//WebSocket provider
+const web3 = new Web3('wss://ethereum.publicnode.com');
+
+//instantiate contract
+const uniswapToken = new web3.eth.Contract(abi, address)
+
+//create the subcription to all the 'Transfer' events
+const subscription = uniswapToken.events.Transfer();
+
+//listen to the events
+subscription.on('data',console.log);
+// ↳ [{...},{...}, ...] live events will be printed in the console
 ```
