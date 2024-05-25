@@ -14,6 +14,12 @@
 
 
 
+
+
+
+
+
+
 <br><br>
 <br><br>
 _________________________________________
@@ -51,6 +57,7 @@ web3.eth.getBlockNumber().then(console.log);
 
 
 
+
 <br><br>
 <br><br>
 _________________________________________
@@ -59,11 +66,50 @@ _________________________________________
 <br><br>
 
 # Wallet
+- https://docs.web3js.org/libdocs/Wallet/
+  
+- A Web3.js Wallet is your main entry point if you want to use a private key directly to do any blockchain operations (transactions), also called Signer in other libraries.
+
+Unlike other libraries where a wallet holds just one account, a Web3.js Wallet can handle multiple accounts. They each have their private key and address. So, whether those keys are in your computer's memory or protected by MetaMask, the Wallet makes Ethereum tasks secure and simple.
+
+The web3-eth-accounts package contains functions to generate Ethereum accounts and sign transactions and data.
+
+In Ethereum, a private key is a critical part of the cryptographic key pair used to secure and control ownership of Ethereum addresses. Each Ethereum address has a matching set of public and private keys in a public-key cryptography system. This key pair enables you to own an Ethereum address, manage funds, and initiate transactions.
+
+
 
 <br><br>
 <br><br>
 
-## Create random wallet
+## Wallets vs Accounts
+- An account in web3.js is an object, it refers to an individual Ethereum address with its associated public and private keys. While a wallet is a higher-level construct for managing multiple accounts, an individual Ethereum address is considered an account.
+- A wallet in web3.js is an array that holds multiple Ethereum accounts. It provides a convenient way to manage and interact with a collection of accounts. Think of it as a digital wallet that you use to store and organize your various Ethereum addresses.
+
+![Web3.js Logo](https://docs.web3js.org/assets/images/image-365636f2b3d9af5957f2bf59aa1d79c4.jpeg)
+
+
+
+
+
+<br><br>
+<br><br>
+
+
+## Local Wallet
+- https://docs.web3js.org/guides/wallet/local_wallet/
+- Local wallets are an in-memory wallet that can hold multiple accounts. Wallets are a convenient way to sign and send transactions in web3.js
+
+
+
+
+
+
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+
+## Create a Wallet with a random account
 - https://docs.web3js.org/guides/getting_started/quickstart#create-random-wallet
 ```javascript
 //create random wallet with 1 account
@@ -89,6 +135,53 @@ Wallet(1)
 */
 ```
 
+
+<br><br>
+<br><br>
+
+## Create an account and add it to an empty Wallet
+```javascript
+import { Web3 } from "web3";
+
+const web3 = new Web3(/* PROVIDER */);
+
+// 1st - creating a new account
+const account = web3.eth.accounts.create();
+/* ↳
+{
+  address: '0x0770B4713B62E0c08C43743bCFcfBAA39Fa703EF',
+  privateKey: '0x97b0c07e275a0d8d9983331ca1a7ecb1a4a6f7dcdd7657529fe07446fa4dfe23',
+  signTransaction: [Function: signTransaction],
+  sign: [Function: sign],
+  encrypt: [Function: encrypt]
+}
+*/
+
+// 2nd - add the account to the wallet
+const wallet = web3.eth.accounts.wallet.add(account);
+/* ↳
+Wallet(1) [
+  {
+    address: '0x0770B4713B62E0c08C43743bCFcfBAA39Fa703EF',
+    privateKey: '0x97b0c07e275a0d8d9983331ca1a7ecb1a4a6f7dcdd7657529fe07446fa4dfe23',
+    signTransaction: [Function: signTransaction],
+    sign: [Function: sign],
+    encrypt: [Function: encrypt]
+  },
+  _accountProvider: {
+    create: [Function: createWithContext],
+    privateKeyToAccount: [Function: privateKeyToAccountWithContext],
+    decrypt: [Function: decryptWithContext]
+  },
+  _addressMap: Map(1) { '0x0770b4713b62e0c08c43743bcfcfbaa39fa703ef' => 0 },
+  _defaultKeyName: 'web3js_wallet'
+]
+*/
+```
+
+
+
+
 <br><br>
 <br><br>
 
@@ -105,29 +198,176 @@ console.log(account[0].privateKey);
 //↳ 0x50d349f5cf627d44858d6fcb6fbf15d27457d35c58ba2d5cfeaf455f25db5bec
 ```
 
+
+
+
+
+
+
+
+
 <br><br>
 <br><br>
 
-## Send transactions
+--  --  --  --  --  --  --  --  
+
+<br><br>
+<br><br>
+
+## Transactions
+
+<br><br>
+<br><br>
+
+### Send transactions
+- https://docs.web3js.org/guides/wallet/#sending-transactions
+- The shortest way to do this, is by creating a Wallet directly by adding a private key (the private key must start with '0x' and it must have funds to execute the transaction)
 ```javascript
-//add an account to a wallet
-const account = web3.eth.accounts.wallet.add('0x50d349f5cf627d44858d6fcb6fbf15d27457d35c58ba2d5cfeaf455f25db5bec');
+import { Web3 } from 'web3';
 
-//create transaction object to send 1 eth to '0xa32...c94' address from the account[0]
-const tx = 
-{ 
-    from: account[0].address,
-    to: '0xa3286628134bad128faeef82f44e99aa64085c94', 
-    value: web3.utils.toWei('1', 'ether')
-};
-//the `from` address must match the one previously added with wallet.add
+const web3 = new Web3('https://ethereum-sepolia.publicnode.com');
 
-//send the transaction
-const txReceipt = await web3.eth.sendTransaction(tx);
+//this will create an array `Wallet` with 1 account with this privateKey
+//it will generate automatically a public key for it
+//make sure you have funds in this accounts
+const wallet = web3.eth.accounts.wallet.add('0x152c39c430806985e4dc16fa1d7d87f90a7a1d0a6b3f17efe5158086815652e5');
 
-console.log('Tx hash:', txReceipt.transactionHash)
-// ↳ Tx hash: 0x03c844b069646e08af1b6f31519a36e3e08452b198ef9f6ce0f0ccafd5e3ae0e
+const _to = '0xc7203efeb54846c149f2c79b715a8927f7334e74';
+const _value = '1'; //1 wei
+
+//the `from` address in the transaction must match the address stored in our `Wallet` array
+//that's why we explicitly access it using `wallet[0].address` to ensure accuracy
+const receipt = await web3.eth.sendTransaction({
+  from: wallet[0].address,
+  to: _to,
+  value: _value,
+});
+//if you have more than 1 account, you can change the address by accessing to another account
+//e.g, `from: wallet[1].address`
+
+console.log('Tx receipt:', receipt);
+/* ↳
+Tx receipt: {
+  blockHash: '0xa43b43b6e13ba47f2283b4afc15271ba07d1bba0430bd0c430f770ba7c98d054',
+  blockNumber: 4960689n,
+  cumulativeGasUsed: 7055436n,
+  effectiveGasPrice: 51964659212n,
+  from: '0xa3286628134bad128faeef82f44e99aa64085c94',
+  gasUsed: 21000n,
+  logs: [],
+  logsBloom: '0x00000...00000000',
+  status: 1n,
+  to: '0xc7203efeb54846c149f2c79b715a8927f7334e74',
+  transactionHash: '0xb88f3f300f1a168beb3a687abc2d14c389ac9709f18b768c90792c7faef0de7c',
+  transactionIndex: 41n,
+  type: 2n
+}
+*/
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br>
+<br><br>
+
+--  --  --  --  --  --  --  --  
+
+<br><br>
+<br><br>
+
+## Wallet Methods
+- The following is a list of Wallet methods in the web3.eth.accounts.wallet package with description and example usage:
+- [add](/libdocs/Wallet#add)
+- [clear](/libdocs/Wallet#clear)
+- [create](/libdocs/Wallet#create)
+- [decrypt](/libdocs/Wallet#decrypt)
+- [encrypt](/libdocs/Wallet#encrypt)
+- [get](/libdocs/Wallet#get)
+- [load](/libdocs/Wallet#load)
+- [remove](/libdocs/Wallet#remove)
+- [save](/libdocs/Wallet#save)
+- [getStorage](/libdocs/Wallet#getStorage)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br>
+<br><br>
+
+______________________________________________________
+______________________________________________________
+
+<br><br>
+<br><br>
+
+# Acounts
+
+## Account Methods
+- [create](https://docs.web3js.org/libdocs/Accounts#create)
+- [decrypt](https://docs.web3js.org/libdocs/Accounts#decrypt)
+- [encrypt](https://docs.web3js.org/libdocs/Accounts#encrypt)
+- [hashMessage](https://docs.web3js.org/libdocs/Accounts#hashMessage)
+- [parseAndValidatePrivateKey](https://docs.web3js.org/libdocs/Accounts#parseandvalidateprivatekey)
+- [privateKeyToAccount](https://docs.web3js.org/libdocs/Accounts#privatekeytoaccount)
+- [privateKeyToAddress](https://docs.web3js.org/libdocs/Accounts#privatekeytoaddress)
+- [privateKeyToPublicKey](https://docs.web3js.org/libdocs/Accounts#privatekeytopublickey)
+- [recover](https://docs.web3js.org/libdocs/Accounts#recover)
+- [recoverTransaction](https://docs.web3js.org/libdocs/Accounts#recovertransaction)
+- [sign](https://docs.web3js.org/libdocs/Accounts#sign)
+- [signTransaction](https://docs.web3js.org/libdocs/Accounts#signtransaction)
+
+
+
+
+
+
+
+
+
+
 
 
 
