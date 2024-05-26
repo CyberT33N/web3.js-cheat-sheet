@@ -589,8 +589,6 @@ subscription.on('data',console.log);
 
 
 
-
-
 <br><br>
 <br><br>
 _________________________________________
@@ -641,3 +639,111 @@ function App() {
 
 export default App;
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br>
+<br><br>
+_________________________________________
+_________________________________________
+<br><br>
+<br><br>
+
+
+# Web3Eth
+- The Web3Eth allows you to interact with an Ethereum blockchain.
+
+<br><br>
+
+## Methods
+- [calculateFeeData](https://docs.web3js.org/api/web3/class/Web3Eth/#calculateFeeData)
+- [call](https://docs.web3js.org/api/web3/class/Web3Eth/#call)
+- [clearSubscriptions](https://docs.web3js.org/api/web3/class/Web3Eth/#clearSubscriptions)
+- [createAccessList](https://docs.web3js.org/api/web3/class/Web3Eth/#createAccessList)
+- [emit](https://docs.web3js.org/api/web3/class/Web3Eth/#emit)
+- [estimateGas](https://docs.web3js.org/api/web3/class/Web3Eth/#estimateGas)
+- [eventNames](https://docs.web3js.org/api/web3/class/Web3Eth/#eventNames)
+- [extend](https://docs.web3js.org/api/web3/class/Web3Eth/#extend)
+- [getAccounts](https://docs.web3js.org/api/web3/class/Web3Eth/#getAccounts)
+- [getBalance](https://docs.web3js.org/api/web3/class/Web3Eth/#getBalance)
+- [getBlock](https://docs.web3js.org/api/web3/class/Web3Eth/#getBlock)
+- [getBlockNumber](https://docs.web3js.org/api/web3/class/Web3Eth/#getBlockNumber)
+- [getBlockTransactionCount](https://docs.web3js.org/api/web3/class/Web3Eth/#getBlockTransactionCount)
+- [getBlockUncleCount](https://docs.web3js.org/api/web3/class/Web3Eth/#getBlockUncleCount)
+- [getChainId](https://docs.web3js.org/api/web3/class/Web3Eth/#getChainId)
+- [getCode](https://docs.web3js.org/api/web3/class/Web3Eth/#getCode)
+- [getCoinbase](https://docs.web3js.org/api/web3/class/Web3Eth/#getCoinbase)
+- [getContextObject](https://docs.web3js.org/api/web3/class/Web3Eth/#getContextObject)
+- [getFeeHistory](https://docs.web3js.org/api/web3/class/Web3Eth/#getFeeHistory)
+- [getGasPrice](https://docs.web3js.org/api/web3/class/Web3Eth/#getGasPrice)
+- [getHashRate](https://docs.web3js.org/api/web3/class/Web3Eth/#getHashRate)
+- [getHashrate](https://docs.web3js.org/api/web3/class/Web3Eth/#getHashrate)
+- [getMaxListeners](https://docs.web3js.org/api/web3/class/Web3Eth/#getMaxListeners)
+- [getMaxPriorityFeePerGas](https://docs.web3js.org/api/web3/class/Web3Eth/#getMaxPriorityFeePerGas)
+- [getNodeInfo](https://docs.web3js.org/api/web3/class/Web3Eth/#getNodeInfo)
+- [getPastLogs](https://docs.web3js.org/api/web3/class/Web3Eth/#getPastLogs)
+- [getPendingTransactions](https://docs.web3js.org/api/web3/class/Web3Eth/#getPendingTransactions)
+- [getProof](https://docs.web3js.org/api/web3/class/Web3Eth/#getProof)
+- [getProtocolVersion](https://docs.web3js.org/api/web3/class/Web3Eth/#getProtocolVersion)
+- [getStorageAt](https://docs.web3js.org/api/web3/class/Web3Eth/#getStorageAt)
+- [getTransaction](https://docs.web3js.org/api/web3/class/Web3Eth/#getTransaction)
+- [getTransactionCount](https://docs.web3js.org/api/web3/class/Web3Eth/#getTransactionCount)
+- [getTransactionFromBlock](https://docs.web3js.org/api/web3/class/Web3Eth/#getTransactionFromBlock)
+- [getTransactionReceipt](https://docs.web3js.org/api/web3/class/Web3Eth/#getTransactionReceipt)
+- [getUncle](https://docs.web3js.org/api/web3/class/Web3Eth/#getUncle)
+- [getWork](https://docs.web3js.org/api/web3/class/Web3Eth/#getWork)
+- [isMining](https://docs.web3js.org/api/web3/class/Web3Eth/#isMining)
+- [isSyncing](https://docs.web3js.org/api/web3/class/Web3Eth/#isSyncing)
+- [link](https://docs.web3js.org/api/web3/class/Web3Eth/#link)
+- [listenerCount](https://docs.web3js.org/api/web3/class/Web3Eth/#listenerCount)
+- [listeners](https://docs.web3js.org/api/web3/class/Web3Eth/#listeners)
+- [off](https://docs.web3js.org/api/web3/class/Web3Eth/#off)
+- [on](https://docs.web3js.org/api/web3/class/Web3Eth/#on)
+- [once](https://docs.web3js.org/api/web3/class/Web3Eth/#once)
+- [registerPlugin](https://docs.web3js.org/api/web3/class/Web3Eth/#registerPlugin)
+- [removeAllListeners](https://docs.web3js.org/api/web3/class/Web3Eth/#removeAllListeners)
+- [requestAccounts](https://docs.web3js.org/api/web3/class/Web3Eth/#requestAccounts)
+- [sendSignedTransaction](https://docs.web3js.org/api/web3/class/Web3Eth/#sendSignedTransaction)
+- [sendTransaction](https://docs.web3js.org/api/web3/class/Web3Eth/#sendTransaction)
+- [setConfig](https://docs.web3js.org/api/web3/class/Web3Eth/#setConfig)
+- [setMaxListenerWarningThreshold](https://docs.web3js.org/api/web3/class/Web3Eth/#setMaxListenerWarningThreshold)
+- [setProvider](https://docs.web3js.org/api/web3/class/Web3Eth/#setProvider)
+- [setRequestManagerMiddleware](https://docs.web3js.org/api/web3/class/Web3Eth/#setRequestManagerMiddleware)
+- [sign](https://docs.web3js.org/api/web3/class/Web3Eth/#sign)
+- [signTransaction](https://docs.web3js.org/api/web3/class/Web3Eth/#signTransaction)
+- [signTypedData](https://docs.web3js.org/api/web3/class/Web3Eth/#signTypedData)
+- [submitWork](https://docs.web3js.org/api/web3/class/Web3Eth/#submitWork)
+- [subscribe](https://docs.web3js.org/api/web3/class/Web3Eth/#subscribe)
+- [use](https://docs.web3js.org/api/web3/class/Web3Eth/#use)
+- [fromContextObject](https://docs.web3js.org/api/web3/class/Web3Eth/#fromContextObject)
+
+
+<br><br>
+
+### getBalance
+```javascript
+web3.eth.getBalance("0x407d73d8a49eeb85d32cf465507dd71d507100c1").then(console.log)
+> 1000000000000n
+```
+
