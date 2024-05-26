@@ -747,3 +747,44 @@ web3.eth.getBalance("0x407d73d8a49eeb85d32cf465507dd71d507100c1").then(console.l
 > 1000000000000n
 ```
 
+#### Convert to USD
+```javascript
+
+
+// Funktion, um den aktuellen Ether-Preis von CoinMarketCap abzurufen
+async function getCurrentEtherPrice() {
+    const url = `https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=ETH&convert=USD`;
+
+    try {
+        const response = await axios.get(url, {
+            headers: {
+                'X-CMC_PRO_API_KEY': apiKey
+            }
+        });
+
+        // Extrahieren Sie den aktuellen Preis von Ether in USD aus der API-Antwort
+        const etherPriceUSD = response.data.data.ETH.quote.USD.price;
+        return etherPriceUSD;
+    } catch (error) {
+        console.error('Fehler beim Abrufen des Ether-Preises:', error);
+        return null;
+    }
+}
+
+async function getBalanceInUSD(address) {
+    try {
+        const balanceWei = await web3.eth.getBalance(address);
+        const etherPriceUSD = await getCurrentEtherPrice();
+        const balanceEther = web3.utils.fromWei(balanceWei, 'ether');
+        const balanceUSD = balanceEther * etherPriceUSD;
+        return balanceUSD;
+    } catch (error) {
+        console.error('Fehler beim Berechnen der Balance in USD:', error);
+        return null;
+    }
+}
+
+const balanceUSD = await getBalanceInUSD(address)
+console.log(`Balance in USD: ${balanceUSD}`)
+```
+
