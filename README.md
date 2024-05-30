@@ -743,16 +743,24 @@ _________________________________________
 
 
 
+
+<br><br>
+<br><br>
+--  --  --  --  --  --  --  --  --  --  --  
 <br><br>
 <br><br>
 
-### getBalance
+### Balance
+
+<br><br>
+
+#### getBalance
 ```javascript
 web3.eth.getBalance("0x407d73d8a49eeb85d32cf465507dd71d507100c1").then(console.log)
 > 1000000000000n
 ```
 
-#### Convert to USD
+##### Convert to USD
 ```javascript
 
 
@@ -796,12 +804,21 @@ console.log(`Balance in USD: ${balanceUSD}`)
 
 
 
+
+
+
+
+
+<br><br>
+<br><br>
+--  --  --  --  --  --  --  --  --  --  --  
 <br><br>
 <br><br>
 
 ### Block
 - In der Blockchain-Technologie ist ein Block eine Datenstruktur, die Transaktionen zusammenfasst und speichert. Jeder Block enthält:
 
+<br><br>
 
 #### baseFeePerGas
 - **Type:** BigInt
@@ -893,10 +910,6 @@ console.log(`Balance in USD: ${balanceUSD}`)
 
 
 
-
-
-
-
 <br><br>
 <br><br>
 
@@ -908,5 +921,67 @@ let block = await web3.eth.getBlock('latest');
 let number = block.number;
 let transactions = block.transactions;
 //console.log('Search Block: ' + transactions);
+```
+
+
+
+
+
+
+
+
+
+
+<br><br>
+<br><br>
+--  --  --  --  --  --  --  --  --  --  --  
+<br><br>
+<br><br>
+
+### Transaction
+
+#### getTransaction()
+- https://docs.web3js.org/api/web3/class/Web3Eth/#getTransaction
+```javascript
+web3.eth.getTransaction('0x73aea70e969941f23f9d24103e91aa1f55c7964eb13daf1c9360c308a72686dc').then(console.log);
+{
+   hash: '0x73aea70e969941f23f9d24103e91aa1f55c7964eb13daf1c9360c308a72686dc',
+   type: 0n,
+   nonce: 0n,
+   blockHash: '0x43202bd16b6bd54bea1b310736bd78bdbe93a64ad940f7586739d9eb25ad8d00',
+   blockNumber: 1n,
+   transactionIndex: 0n,
+   from: '0x6e599da0bff7a6598ac1224e4985430bf16458a4',
+   to: '0x6f1df96865d09d21e8f3f9a7fba3b17a11c7c53c',
+   value: 1n,
+   gas: 90000n,
+   gasPrice: 2000000000n,
+   input: '0x',
+   v: 2709n,
+   r: '0x8b336c290f6d7b2af3ccb2c02203a8356cc7d5b150ab19cce549d55636a3a78c',
+   s: '0x5a83c6f816befc5cd4b0c997a347224a8aa002e5799c4b082a3ec726d0e9531d'
+ }
+
+web3.eth.getTransaction(
+    web3.utils.hexToBytes("0x30755ed65396facf86c53e6217c52b4daebe72aa4941d89635409de4c9c7f9466d4e9aaec7977f05e923889b33c0d0dd27d7226b6e6f56ce737465c5cfd04be400"),
+    { number: FMT_NUMBER.NUMBER , bytes: FMT_BYTES.HEX }
+).then(console.log);
+{
+   hash: '0x73aea70e969941f23f9d24103e91aa1f55c7964eb13daf1c9360c308a72686dc',
+   type: 0,
+   nonce: 0,
+   blockHash: '0x43202bd16b6bd54bea1b310736bd78bdbe93a64ad940f7586739d9eb25ad8d00',
+   blockNumber: 1,
+   transactionIndex: 0,
+   from: '0x6e599da0bff7a6598ac1224e4985430bf16458a4',
+   to: '0x6f1df96865d09d21e8f3f9a7fba3b17a11c7c53c',
+   value: 1,
+   gas: 90000,
+   gasPrice: 2000000000,
+   input: '0x',
+   v: 2709,
+   r: '0x8b336c290f6d7b2af3ccb2c02203a8356cc7d5b150ab19cce549d55636a3a78c',
+   s: '0x5a83c6f816befc5cd4b0c997a347224a8aa002e5799c4b082a3ec726d0e9531d'
+ }
 ```
 
