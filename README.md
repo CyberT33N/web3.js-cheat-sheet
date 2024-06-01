@@ -1032,3 +1032,35 @@ web3.eth.getTransaction(
  }
 ```
 
+#### get transactions from adress
+- You can manually try to iterate over each block and then search for your address. E.g. you make -1n on the block and search in every block. But this does not make any send if you want to get any past transactions. But for present transactions it may be usefully. Transactions itself are not indexed doe
+-  https://ethereum.stackexchange.com/questions/8900/how-to-get-transactions-by-account-using-web3-js
+
+-  So recommended is to use etherscan.io or use something like this https://trueblocks.io with your own node
+```javascript
+class TransactionChecker {
+    constructor(address) {
+        this.address = address.toLowerCase();
+        this.web3 = new Web3("https://mainnet.infura.io/v3/60968ff3b2f84a0ebdff7a993f4d080b");
+}
+
+async checkBlock() {
+    let block = await this.web3.eth.getBlock('latest');
+    let number = block.number;
+    let transactions = block.transactions;
+    //console.log('Search Block: ' + transactions);
+
+    if (block != null && block.transactions != null) {
+        for (let txHash of block.transactions) {
+            let tx = await this.web3.eth.getTransaction(txHash);
+            if (this.address == tx.to.toLowerCase()) {
+                console.log("from: " + tx.from.toLowerCase() + " to: " + tx.to.toLowerCase() + " value: " + tx.value);
+            }
+        }
+    }
+  }
+}
+
+ var transactionChecker = new  TransactionChecker('0x69fb2a80542721682bfe8daa8fee847cddd1a267');
+ transactionChecker.checkBlock();
+```
