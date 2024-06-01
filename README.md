@@ -660,6 +660,52 @@ export default App;
 
 
 
+<br><br>
+<br><br>
+_________________________________________
+_________________________________________
+<br><br>
+<br><br>
+
+# web3-eth-accounts
+- https://docs.web3js.org/api/web3-eth-accounts
+
+## Methods
+- [assertIsUint8Array](https://docs.web3js.org/api/web3-eth-accounts/function/assertIsUint8Array)
+- [bigIntToHex](https://docs.web3js.org/api/web3-eth-accounts/function/bigIntToHex)
+- [bigIntToUint8Array](https://docs.web3js.org/api/web3-eth-accounts/function/bigIntToUint8Array)
+- [bigIntToUnpaddedUint8Array](https://docs.web3js.org/api/web3-eth-accounts/function/bigIntToUnpaddedUint8Array)
+- [create](https://docs.web3js.org/api/web3-eth-accounts/function/create)
+- [decrypt](https://docs.web3js.org/api/web3-eth-accounts/function/decrypt)
+- [ecrecover](https://docs.web3js.org/api/web3-eth-accounts/function/ecrecover)
+- [encrypt](https://docs.web3js.org/api/web3-eth-accounts/function/encrypt)
+- [hashMessage](https://docs.web3js.org/api/web3-eth-accounts/function/hashMessage)
+- [intToUint8Array](https://docs.web3js.org/api/web3-eth-accounts/function/intToUint8Array)
+- [isAccessList](https://docs.web3js.org/api/web3-eth-accounts/function/isAccessList)
+- [isAccessListUint8Array](https://docs.web3js.org/api/web3-eth-accounts/function/isAccessListUint8Array)
+- [padToEven](https://docs.web3js.org/api/web3-eth-accounts/function/padToEven)
+- [parseAndValidatePrivateKey](https://docs.web3js.org/api/web3-eth-accounts/function/parseAndValidatePrivateKey)
+- [parseGethGenesis](https://docs.web3js.org/api/web3-eth-accounts/function/parseGethGenesis)
+- [privateKeyToAccount](https://docs.web3js.org/api/web3-eth-accounts/function/privateKeyToAccount)
+- [privateKeyToAddress](https://docs.web3js.org/api/web3-eth-accounts/function/privateKeyToAddress)
+- [privateKeyToPublicKey](https://docs.web3js.org/api/web3-eth-accounts/function/privateKeyToPublicKey)
+- [recover](https://docs.web3js.org/api/web3-eth-accounts/function/recover)
+- [recoverTransaction](https://docs.web3js.org/api/web3-eth-accounts/function/recoverTransaction)
+- [setLengthLeft](https://docs.web3js.org/api/web3-eth-accounts/function/setLengthLeft)
+- [sign](https://docs.web3js.org/api/web3-eth-accounts/function/sign)
+- [signTransaction](https://docs.web3js.org/api/web3-eth-accounts/function/signTransaction)
+- [stripHexPrefix](https://docs.web3js.org/api/web3-eth-accounts/function/stripHexPrefix)
+- [stripZeros](https://docs.web3js.org/api/web3-eth-accounts/function/stripZeros)
+- [toType](https://docs.web3js.org/api/web3-eth-accounts/function/toType)
+- [toUint8Array](https://docs.web3js.org/api/web3-eth-accounts/function/toUint8Array)
+- [uint8ArrayToBigInt](https://docs.web3js.org/api/web3-eth-accounts/function/uint8ArrayToBigInt)
+- [unpadUint8Array](https://docs.web3js.org/api/web3-eth-accounts/function/unpadUint8Array)
+- [zeros](https://docs.web3js.org/api/web3-eth-accounts/function/zeros)
+
+
+
+
+
 
 
 
@@ -672,6 +718,7 @@ _________________________________________
 
 
 # Web3Eth
+- https://docs.web3js.org/api/web3-eth
 - The Web3Eth allows you to interact with an Ethereum blockchain.
 
 <br><br>
