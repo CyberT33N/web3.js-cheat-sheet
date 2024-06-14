@@ -709,6 +709,10 @@ _________________________________________
 
 
 
+
+
+
+
 <br><br>
 <br><br>
 _________________________________________
@@ -797,6 +801,34 @@ _________________________________________
 <br><br>
 <br><br>
 
+
+
+### subscribe
+- https://docs.web3js.org/api/web3/class/Web3Eth/#subscribe
+```javascript
+// You need provider which is able to use subscribe. You also must use WSS endpoint
+const provider = 'wss://ethereum-mainnet.core.chainstack.com/xxxxxxxxxxx'
+const web3 = new Web3(provider)
+
+async function subscribeToNewBlocks() {
+  const subscription = await web3.eth.subscribe('newBlockHeaders');
+  subscription.on('data', handleNewBlock);
+}
+
+subscribeToNewBlocks()
+```
+
+
+
+
+
+
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+
+
 ### Balance
 
 <br><br>
@@ -847,6 +879,15 @@ async function getBalanceInUSD(address) {
 const balanceUSD = await getBalanceInUSD(address)
 console.log(`Balance in USD: ${balanceUSD}`)
 ```
+
+
+
+
+
+
+
+
+
 
 
 
