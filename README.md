@@ -720,30 +720,16 @@ console.log(eventTransfer);
 
 
 
+
+
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+
+
 ## Events
 - https://docs.web3js.org/api/web3/class/Contract#events
-
-<br><br>
-<br><br>
-
-### Listening to live events
-- You MUST initialize the Web3 provider with a WebSocket endpoint to subscribe to live events
-```javascript
-import { Web3 } from 'web3';
-
-//WebSocket provider
-const web3 = new Web3('wss://ethereum.publicnode.com');
-
-//instantiate contract
-const uniswapToken = new web3.eth.Contract(abi, address)
-
-//create the subcription to all the 'Transfer' events
-const subscription = uniswapToken.events.Transfer();
-
-//listen to the events
-subscription.on('data',console.log);
-// ↳ [{...},{...}, ...] live events will be printed in the console
-```
 
 <br><br>
 <br><br>
@@ -802,6 +788,97 @@ myEvent.on('error', (error) => {
   console.error(error);
 })
 ```
+
+
+
+
+
+<br><br>
+<br><br>
+
+### Get details of layer-2 coin
+```javascript
+// ERC20 ABI (Standard ABI für ERC20 Tokens)
+const ERC20_ABI = [
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "name",
+    "outputs": [{"name": "","type": "string"}],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "symbol",
+    "outputs": [{"name": "","type": "string"}],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "decimals",
+    "outputs": [{"name": "","type": "uint8"}],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "totalSupply",
+    "outputs": [{"name": "","type": "uint256"}],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  }
+];
+
+
+// Replace with the ERC20 token address you want to query
+const tokenAddress = "0x69352631646fB9471F84aeb31E2A15bf7c069868";
+
+async function getTokenDetails() {
+  try {
+    const tokenContract = new web3.eth.Contract(ERC20_ABI, tokenAddress);
+
+    // Fetch token details
+    const [name, symbol, decimals, totalSupply] = await Promise.all([
+      tokenContract.methods.name().call(),
+      tokenContract.methods.symbol().call(),
+      tokenContract.methods.decimals().call(),
+      tokenContract.methods.totalSupply().call()
+    ]);
+
+    console.log(`Token Name: ${name}`);
+    console.log(`Token Symbol: ${symbol}`);
+    console.log(`Decimals: ${decimals}`);
+    console.log(`Total Supply: ${totalSupply}`);
+  } catch (error) {
+    console.error("Error fetching token details:", error);
+  }
+}
+
+getTokenDetails();
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
