@@ -720,6 +720,66 @@ _________________________________________
 <br><br>
 <br><br>
 
+# Classes
+- https://docs.web3js.org/api/web3/class
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br>
+<br><br>
+
+
+
+# Contract
+- The web3.eth.Contract makes it easy to interact with smart contracts on the ethereum blockchain
+- https://docs.web3js.org/api/web3/class/Contract
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br>
+<br><br>
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+<br><br>
+<br><br>
+
 
 # Web3Eth
 - https://docs.web3js.org/api/web3-eth
