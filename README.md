@@ -395,164 +395,6 @@ ______________________________________________________
 
 
 
-<br><br>
-<br><br>
-_________________________________________
-_________________________________________
-<br><br>
-<br><br>
-
-# Contract
-
-<br><br>
-<br><br>
-
-## Instantiate a contract
-```javascript
-//Uniswap token address in mainnet
-const address = '0x1f9840a85d5af5bf1d1762f925bdaddc4201f984'
-
-//you can find the complete ABI in etherscan.io
-const ABI = 
-[
-    {
-      name: 'symbol',
-      outputs: [{ type: 'string' }],
-      type: 'function',
-    },
-    {
-      name: 'totalSupply',
-      outputs: [{ type: 'uint256' }],
-      type: 'function',
-    },
-];
-
-//instantiate the contract
-const uniswapToken = new web3.eth.Contract(abi, address);
-```
-
-<br><br>
-<br><br>
-
-
-## Read-methods
-```javascript
-//make the call to the contract
-const symbol = await uniswapToken.methods.symbol().call();
-
-console.log('Uniswap symbol:',symbol);
-// ↳ Uniswap symbol: UNI
-
-//make the call to the contract
-const totalSupply = await uniswapToken.methods.totalSupply().call();
-
-console.log('Uniswap Total supply:', totalSupply);
-// ↳ Uniswap Total Supply: 1000000000000000000000000000n
-
-//use web3 utils to format the units
-console.log(web3.utils.fromWei(totalSupply, 'ether'))
-// ↳ 1000000000
-```
-
-
-
-<br><br>
-<br><br>
-
-
-## Writing-methods
-```javascript
-//address to send the token
-const to = '0xcf185f2F3Fe19D82bFdcee59E3330FD7ba5f27ce';
-
-//value to transfer (1 with 18 decimals)
-const value = web3.utils.toWei('1','ether');
-
-//send the transaction => return the Tx receipt
-const txReceipt = await uniswapToken.methods.transfer(to,value).send({from: account[0].address});
-
-console.log('Tx hash:',txReceipt.transactionHash);
-// ↳ Tx hash: 0x14273c2b5781cc8f1687906c68bfc93482c603026d01b4fd37a04adb6217ad43
-```
-
-
-
-
-
-
-<br><br>
-<br><br>
-
-
-## Query past events
-```javascript
-//get past `Transfer` events from block 18850576
-const eventTransfer = await uniswapToken.getPastEvents('Transfer', { fromBlock: 18850576 });
-
-console.log(eventTransfer);
-// ↳ [{...},{...}, ...] array with all the events emitted
-//you can only query logs from the previous 100_000 blocks 
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<br><br>
-<br><br>
-_________________________________________
-_________________________________________
-<br><br>
-<br><br>
-
-# Events
-
-<br><br>
-<br><br>
-
-## Listening to live events
-- You MUST initialize the Web3 provider with a WebSocket endpoint to subscribe to live events
-```javascript
-import { Web3 } from 'web3';
-
-//WebSocket provider
-const web3 = new Web3('wss://ethereum.publicnode.com');
-
-//instantiate contract
-const uniswapToken = new web3.eth.Contract(abi, address)
-
-//create the subcription to all the 'Transfer' events
-const subscription = uniswapToken.events.Transfer();
-
-//listen to the events
-subscription.on('data',console.log);
-// ↳ [{...},{...}, ...] live events will be printed in the console
-```
-
 
 
 
@@ -748,6 +590,177 @@ _________________________________________
 - https://docs.web3js.org/api/web3/class/Contract
 
 
+# Liste der Elemente
+
+- [BatchRequest](https://docs.web3js.org/api/web3/class/Contract#BatchRequest)
+- [accountProvider](https://docs.web3js.org/api/web3/class/Contract#accountProvider)
+- [blockHeaderTimeout](https://docs.web3js.org/api/web3/class/Contract#blockHeaderTimeout)
+- [contractDataInputFill](https://docs.web3js.org/api/web3/class/Contract#contractDataInputFill)
+- [currentProvider](https://docs.web3js.org/api/web3/class/Contract#currentProvider)
+- [defaultAccount](https://docs.web3js.org/api/web3/class/Contract#defaultAccount)
+- [defaultBlock](https://docs.web3js.org/api/web3/class/Contract#defaultBlock)
+- [defaultChain](https://docs.web3js.org/api/web3/class/Contract#defaultChain)
+- [defaultCommon](https://docs.web3js.org/api/web3/class/Contract#defaultCommon)
+- [defaultHardfork](https://docs.web3js.org/api/web3/class/Contract#defaultHardfork)
+- [defaultMaxPriorityFeePerGas](https://docs.web3js.org/api/web3/class/Contract#defaultMaxPriorityFeePerGas)
+- [defaultNetworkId](https://docs.web3js.org/api/web3/class/Contract#defaultNetworkId)
+- [defaultReturnFormat](https://docs.web3js.org/api/web3/class/Contract#defaultReturnFormat)
+- [defaultTransactionType](https://docs.web3js.org/api/web3/class/Contract#defaultTransactionType)
+- [enableExperimentalFeatures](https://docs.web3js.org/api/web3/class/Contract#enableExperimentalFeatures)
+- [events](https://docs.web3js.org/api/web3/class/Contract#events)
+- [givenProvider](https://docs.web3js.org/api/web3/class/Contract#givenProvider)
+- [handleRevert](https://docs.web3js.org/api/web3/class/Contract#handleRevert)
+- [maxListenersWarningThreshold](https://docs.web3js.org/api/web3/class/Contract#maxListenersWarningThreshold)
+- [methods](https://docs.web3js.org/api/web3/class/Contract#methods)
+- [provider](https://docs.web3js.org/api/web3/class/Contract#provider)
+- [requestManager](https://docs.web3js.org/api/web3/class/Contract#requestManager)
+- [subscriptionManager](https://docs.web3js.org/api/web3/class/Contract#subscriptionManager)
+- [transactionBlockTimeout](https://docs.web3js.org/api/web3/class/Contract#transactionBlockTimeout)
+- [transactionBuilder](https://docs.web3js.org/api/web3/class/Contract#transactionBuilder)
+- [transactionConfirmationBlocks](https://docs.web3js.org/api/web3/class/Contract#transactionConfirmationBlocks)
+- [transactionConfirmationPollingInterval](https://docs.web3js.org/api/web3/class/Contract#transactionConfirmationPollingInterval)
+- [transactionPollingInterval](https://docs.web3js.org/api/web3/class/Contract#transactionPollingInterval)
+- [transactionPollingTimeout](https://docs.web3js.org/api/web3/class/Contract#transactionPollingTimeout)
+- [transactionReceiptPollingInterval](https://docs.web3js.org/api/web3/class/Contract#transactionReceiptPollingInterval)
+- [transactionSendTimeout](https://docs.web3js.org/api/web3/class/Contract#transactionSendTimeout)
+- [transactionTypeParser](https://docs.web3js.org/api/web3/class/Contract#transactionTypeParser)
+- [wallet](https://docs.web3js.org/api/web3/class/Contract#wallet)
+
+
+
+
+<br><br>
+<br><br>
+
+## Instantiate a contract
+```javascript
+//Uniswap token address in mainnet
+const address = '0x1f9840a85d5af5bf1d1762f925bdaddc4201f984'
+
+//you can find the complete ABI in etherscan.io
+const ABI = 
+[
+    {
+      name: 'symbol',
+      outputs: [{ type: 'string' }],
+      type: 'function',
+    },
+    {
+      name: 'totalSupply',
+      outputs: [{ type: 'uint256' }],
+      type: 'function',
+    },
+];
+
+//instantiate the contract
+const uniswapToken = new web3.eth.Contract(abi, address);
+```
+
+<br><br>
+<br><br>
+
+## Read-methods
+```javascript
+//make the call to the contract
+const symbol = await uniswapToken.methods.symbol().call();
+
+console.log('Uniswap symbol:',symbol);
+// ↳ Uniswap symbol: UNI
+
+//make the call to the contract
+const totalSupply = await uniswapToken.methods.totalSupply().call();
+
+console.log('Uniswap Total supply:', totalSupply);
+// ↳ Uniswap Total Supply: 1000000000000000000000000000n
+
+//use web3 utils to format the units
+console.log(web3.utils.fromWei(totalSupply, 'ether'))
+// ↳ 1000000000
+```
+
+
+
+<br><br>
+<br><br>
+
+
+## Writing-methods
+```javascript
+//address to send the token
+const to = '0xcf185f2F3Fe19D82bFdcee59E3330FD7ba5f27ce';
+
+//value to transfer (1 with 18 decimals)
+const value = web3.utils.toWei('1','ether');
+
+//send the transaction => return the Tx receipt
+const txReceipt = await uniswapToken.methods.transfer(to,value).send({from: account[0].address});
+
+console.log('Tx hash:',txReceipt.transactionHash);
+// ↳ Tx hash: 0x14273c2b5781cc8f1687906c68bfc93482c603026d01b4fd37a04adb6217ad43
+```
+
+
+
+<br><br>
+<br><br>
+
+
+## Query past events
+```javascript
+//get past `Transfer` events from block 18850576
+const eventTransfer = await uniswapToken.getPastEvents('Transfer', { fromBlock: 18850576 });
+
+console.log(eventTransfer);
+// ↳ [{...},{...}, ...] array with all the events emitted
+//you can only query logs from the previous 100_000 blocks 
+```
+
+
+
+
+
+
+## Events
+- https://docs.web3js.org/api/web3/class/Contract#events
+
+<br><br>
+<br><br>
+
+### Listening to live events
+- You MUST initialize the Web3 provider with a WebSocket endpoint to subscribe to live events
+```javascript
+import { Web3 } from 'web3';
+
+//WebSocket provider
+const web3 = new Web3('wss://ethereum.publicnode.com');
+
+//instantiate contract
+const uniswapToken = new web3.eth.Contract(abi, address)
+
+//create the subcription to all the 'Transfer' events
+const subscription = uniswapToken.events.Transfer();
+
+//listen to the events
+subscription.on('data',console.log);
+// ↳ [{...},{...}, ...] live events will be printed in the console
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -776,7 +789,8 @@ _________________________________________
 
 <br><br>
 <br><br>
--- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+_________________________________________
+_________________________________________
 <br><br>
 <br><br>
 
