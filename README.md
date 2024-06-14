@@ -818,6 +818,51 @@ async function subscribeToNewBlocks() {
 subscribeToNewBlocks()
 ```
 
+<br><br>
+
+#### Track swaps on Uniswap
+```
+// You need provider which is able to use subscribe. You also must use WSS endpoint
+const provider = 'wss://ethereum-mainnet.core.chainstack.com/xxxxxxxxxxx'
+const web3 = new Web3(provider)
+
+
+const UNISWAP_ROUTER_ADDRESS = "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D";
+const SWAP_EXACT_ETH_FOR_TOKENS_SIGNATURE = "0x7ff36ab5";
+const SWAP_EXACT_ETH_OR_TOKENS_SUPPORTING_FEE_ON_TRANSFER_TOKENS_SIGNATURE = "0xb6f9de95";
+
+async function subscribeToNewBlocks() {
+  const subscription = await web3.eth.subscribe('newBlockHeaders');
+  subscription.on('data', handleNewBlock);
+}
+
+async function handleNewBlock(blockHeader) {
+  console.log(`Got new block: ${blockHeader.number}`)
+  const block = await web3.eth.getBlock(blockHeader.number, true)
+
+  block.transactions.forEach((tx) => {
+    if (
+        tx.to && tx.to.toLowerCase() === UNISWAP_ROUTER_ADDRESS.toLowerCase() &&
+        (
+          tx.input.startsWith(SWAP_EXACT_ETH_FOR_TOKENS_SIGNATURE) || 
+          tx.input.startsWith(SWAP_EXACT_ETH_OR_TOKENS_SUPPORTING_FEE_ON_TRANSFER_TOKENS_SIGNATURE)
+        )
+      ) {
+      console.log("-----------------------------------------------------")
+      console.log(`Incoming swap transaction: ${tx.hash}`);
+      console.log(`From: ${tx.from}`);
+      console.log(`Value: ${web3.utils.fromWei(tx.value, "ether")} ETH`);
+      console.log("-----------------------------------------------------")
+    }
+  })
+}
+
+subscribeToNewBlocks()
+```
+
+
+
+
 
 
 
