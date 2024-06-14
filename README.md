@@ -745,8 +745,63 @@ subscription.on('data',console.log);
 // ↳ [{...},{...}, ...] live events will be printed in the console
 ```
 
+<br><br>
+<br><br>
 
+### Track new pairs in uniswap
+- token0 is the layer 2 coin
+- token1: Die Adresse des zweiten Tokens im neuen Liquiditätspaar.
+- pair: Die Adresse des neu erstellten Liquiditätspaares auf Uniswap, welches aus token0 und token1 besteht.
+```
+const UNISWAP_FACTORY_ADDRESS = "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f";
+const FACTORY_ABI = [
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "token0",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "token1",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "pair",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "undefined",
+        "type": "uint256"
+      }
+    ],
+    "name": "PairCreated",
+    "type": "event"
+  }
+];
 
+// Create a contract instance
+const uniswapFactory = new web3.eth.Contract(FACTORY_ABI, UNISWAP_FACTORY_ADDRESS);
+
+// Subscribe to PairCreated events
+const myEvent = await uniswapFactory.events.PairCreated()
+
+myEvent.on('data', (event) => {
+  console.log(`New pair created! Token0: ${event.returnValues.token0}, Token1: ${event.returnValues.token1}, Pair Address: ${event.returnValues.pair}`);
+})
+
+myEvent.on('error', (error) => {
+  console.error(error);
+})
+```
 
 
 
