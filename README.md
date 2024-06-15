@@ -582,16 +582,17 @@ _________________________________________
 
 <br><br>
 <br><br>
-
+<br><br>
+<br><br>
 
 
 # Contract
 - The web3.eth.Contract makes it easy to interact with smart contracts on the ethereum blockchain
 - https://docs.web3js.org/api/web3/class/Contract
 
+<br><br>
 
-# Liste der Elemente
-
+# Acessors
 - [BatchRequest](https://docs.web3js.org/api/web3/class/Contract#BatchRequest)
 - [accountProvider](https://docs.web3js.org/api/web3/class/Contract#accountProvider)
 - [blockHeaderTimeout](https://docs.web3js.org/api/web3/class/Contract#blockHeaderTimeout)
@@ -626,6 +627,32 @@ _________________________________________
 - [transactionTypeParser](https://docs.web3js.org/api/web3/class/Contract#transactionTypeParser)
 - [wallet](https://docs.web3js.org/api/web3/class/Contract#wallet)
 
+<br><br>
+
+# Methods
+- [clone](https://docs.web3js.org/api/web3/class/Contract#clone)
+- [decodeMethodData](https://docs.web3js.org/api/web3/class/Contract#decodeMethodData)
+- [deploy](https://docs.web3js.org/api/web3/class/Contract#deploy)
+- [emit](https://docs.web3js.org/api/web3/class/Contract#emit)
+- [eventNames](https://docs.web3js.org/api/web3/class/Contract#eventNames)
+- [extend](https://docs.web3js.org/api/web3/class/Contract#extend)
+- [getContextObject](https://docs.web3js.org/api/web3/class/Contract#getContextObject)
+- [getMaxListeners](https://docs.web3js.org/api/web3/class/Contract#getMaxListeners)
+- [getPastEvents](https://docs.web3js.org/api/web3/class/Contract#getPastEvents)
+- [link](https://docs.web3js.org/api/web3/class/Contract#link)
+- [listenerCount](https://docs.web3js.org/api/web3/class/Contract#listenerCount)
+- [listeners](https://docs.web3js.org/api/web3/class/Contract#listeners)
+- [off](https://docs.web3js.org/api/web3/class/Contract#off)
+- [on](https://docs.web3js.org/api/web3/class/Contract#on)
+- [once](https://docs.web3js.org/api/web3/class/Contract#once)
+- [registerPlugin](https://docs.web3js.org/api/web3/class/Contract#registerPlugin)
+- [removeAllListeners](https://docs.web3js.org/api/web3/class/Contract#removeAllListeners)
+- [setConfig](https://docs.web3js.org/api/web3/class/Contract#setConfig)
+- [setMaxListenerWarningThreshold](https://docs.web3js.org/api/web3/class/Contract#setMaxListenerWarningThreshold)
+- [setProvider](https://docs.web3js.org/api/web3/class/Contract#setProvider)
+- [setRequestManagerMiddleware](https://docs.web3js.org/api/web3/class/Contract#setRequestManagerMiddleware)
+- [use](https://docs.web3js.org/api/web3/class/Contract#use)
+- [fromContextObject](https://docs.web3js.org/api/web3/class/Contract#fromContextObject)
 
 
 
@@ -702,10 +729,14 @@ console.log('Tx hash:',txReceipt.transactionHash);
 
 
 <br><br>
+<br><br
+-- -- -- -- -- -- -- -- -- -- -- 
+<br><br>
 <br><br>
 
 
-## Query past events
+
+## getPastEvents
 ```javascript
 //get past `Transfer` events from block 18850576
 const eventTransfer = await uniswapToken.getPastEvents('Transfer', { fromBlock: 18850576 });
@@ -713,6 +744,52 @@ const eventTransfer = await uniswapToken.getPastEvents('Transfer', { fromBlock: 
 console.log(eventTransfer);
 // ↳ [{...},{...}, ...] array with all the events emitted
 //you can only query logs from the previous 100_000 blocks 
+```
+
+### get past created pairs
+```javascript
+const UNISWAP_FACTORY_ADDRESS = "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f"; // Mainnet UniswapV2Factory
+const FACTORY_ABI = [
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "token0",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "token1",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "pair",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "undefined",
+        "type": "uint256"
+      }
+    ],
+    "name": "PairCreated",
+    "type": "event"
+  }
+];
+
+// Create a contract instance
+const uniswapFactory = new web3.eth.Contract(FACTORY_ABI, UNISWAP_FACTORY_ADDRESS);
+
+const pairs = await uniswapFactory.getPastEvents('PairCreated', {
+  fromBlock: 	20093620,
+  toBlock: 	20093630
+})
 ```
 
 
