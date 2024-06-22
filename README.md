@@ -67,6 +67,8 @@ _________________________________________
 
 # Wallet
 - https://docs.web3js.org/libdocs/Wallet/
+
+<details><summary>Click to expand..</summary>
   
 - A Web3.js Wallet is your main entry point if you want to use a private key directly to do any blockchain operations (transactions), also called Signer in other libraries.
 
@@ -299,7 +301,7 @@ Tx receipt: {
 - [save](/libdocs/Wallet#save)
 - [getStorage](/libdocs/Wallet#getStorage)
 
-
+</details>
 
 
 
@@ -345,6 +347,8 @@ ______________________________________________________
 
 # Acounts
 
+<details><summary>Click to expand..</summary>
+
 ## Account Methods
 - [create](https://docs.web3js.org/libdocs/Accounts#create)
 - [decrypt](https://docs.web3js.org/libdocs/Accounts#decrypt)
@@ -363,17 +367,7 @@ ______________________________________________________
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+</details>
 
 
 
@@ -502,6 +496,12 @@ export default App;
 
 
 
+
+
+
+
+
+
 <br><br>
 <br><br>
 _________________________________________
@@ -511,7 +511,9 @@ _________________________________________
 
 # web3-eth-accounts
 - https://docs.web3js.org/api/web3-eth-accounts
-
+- 
+<details><summary>Click to expand..</summary>
+  
 ## Methods
 - [assertIsUint8Array](https://docs.web3js.org/api/web3-eth-accounts/function/assertIsUint8Array)
 - [bigIntToHex](https://docs.web3js.org/api/web3-eth-accounts/function/bigIntToHex)
@@ -543,6 +545,21 @@ _________________________________________
 - [uint8ArrayToBigInt](https://docs.web3js.org/api/web3-eth-accounts/function/uint8ArrayToBigInt)
 - [unpadUint8Array](https://docs.web3js.org/api/web3-eth-accounts/function/unpadUint8Array)
 - [zeros](https://docs.web3js.org/api/web3-eth-accounts/function/zeros)
+
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -586,13 +603,15 @@ _________________________________________
 <br><br>
 
 
-# Contract
+## Contract
 - The web3.eth.Contract makes it easy to interact with smart contracts on the ethereum blockchain
 - https://docs.web3js.org/api/web3/class/Contract
 
+<details><summary>Click to expand..</summary>
+
 <br><br>
 
-# Acessors
+### Acessors
 - [BatchRequest](https://docs.web3js.org/api/web3/class/Contract#BatchRequest)
 - [accountProvider](https://docs.web3js.org/api/web3/class/Contract#accountProvider)
 - [blockHeaderTimeout](https://docs.web3js.org/api/web3/class/Contract#blockHeaderTimeout)
@@ -629,7 +648,7 @@ _________________________________________
 
 <br><br>
 
-# Methods
+## Methods
 - [clone](https://docs.web3js.org/api/web3/class/Contract#clone)
 - [decodeMethodData](https://docs.web3js.org/api/web3/class/Contract#decodeMethodData)
 - [deploy](https://docs.web3js.org/api/web3/class/Contract#deploy)
@@ -942,7 +961,7 @@ async function getTokenDetails() {
 
 getTokenDetails();
 ```
-
+</details>
 
 
 
@@ -1008,6 +1027,8 @@ _________________________________________
 - https://docs.web3js.org/api/web3-eth
 - The Web3Eth allows you to interact with an Ethereum blockchain.
 
+<details><summary>Click to expand..</summary>
+  
 <br><br>
 
 ## Methods
@@ -1433,3 +1454,101 @@ async checkBlock() {
  var transactionChecker = new  TransactionChecker('0x69fb2a80542721682bfe8daa8fee847cddd1a267');
  transactionChecker.checkBlock();
 ```
+
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br>
+<br><br>
+_________________________________________
+_________________________________________
+<br><br>
+<br><br>
+
+
+# web3-validator
+- https://github.com/web3/web3.js/tree/4.x/packages/web3-validator
+- https://docs.web3js.org/api/web3-validator
+```javascript
+import { validator } from 'web3-validator';
+
+// To validate and throw
+validator.validate(['uint8', 'string'], [val1, val2]);
+
+// To validate and return error
+const errors = validator.validate(['uint8', 'string'], [val1, val2], { silent: true });
+```
+
+<details><summary>Click to expand..</summary>
+
+# Web3 Validator Functions
+
+- [checkAddressCheckSum](https://docs.web3js.org/api/web3-validator/function/checkAddressCheckSum)
+- [isAddress](https://docs.web3js.org/api/web3-validator/function/isAddress)
+- [isBigInt](https://docs.web3js.org/api/web3-validator/function/isBigInt)
+- [isBlockNumber](https://docs.web3js.org/api/web3-validator/function/isBlockNumber)
+- [isBlockNumberOrTag](https://docs.web3js.org/api/web3-validator/function/isBlockNumberOrTag)
+- [isBlockTag](https://docs.web3js.org/api/web3-validator/function/isBlockTag)
+- [isBloom](https://docs.web3js.org/api/web3-validator/function/isBloom)
+- [isBoolean](https://docs.web3js.org/api/web3-validator/function/isBoolean)
+- [isBytes](https://docs.web3js.org/api/web3-validator/function/isBytes)
+- [isContractAddressInBloom](https://docs.web3js.org/api/web3-validator/function/isContractAddressInBloom)
+- [isFilterObject](https://docs.web3js.org/api/web3-validator/function/isFilterObject)
+- [isHex](https://docs.web3js.org/api/web3-validator/function/isHex)
+- [isHexPrefixed](https://docs.web3js.org/api/web3-validator/function/isHexPrefixed)
+- [isHexStrict](https://docs.web3js.org/api/web3-validator/function/isHexStrict)
+- [isHexString](https://docs.web3js.org/api/web3-validator/function/isHexString)
+- [isHexString32Bytes](https://docs.web3js.org/api/web3-validator/function/isHexString32Bytes)
+- [isHexString8Bytes](https://docs.web3js.org/api/web3-validator/function/isHexString8Bytes)
+- [isInBloom](https://docs.web3js.org/api/web3-validator/function/isInBloom)
+- [isInt](https://docs.web3js.org/api/web3-validator/function/isInt)
+- [isNullish](https://docs.web3js.org/api/web3-validator/function/isNullish)
+- [isNumber](https://docs.web3js.org/api/web3-validator/function/isNumber)
+- [isObject](https://docs.web3js.org/api/web3-validator/function/isObject)
+- [isString](https://docs.web3js.org/api/web3-validator/function/isString)
+- [isTopic](https://docs.web3js.org/api/web3-validator/function/isTopic)
+- [isTopicInBloom](https://docs.web3js.org/api/web3-validator/function/isTopicInBloom)
+- [isUInt](https://docs.web3js.org/api/web3-validator/function/isUInt)
+- [isUint8Array](https://docs.web3js.org/api/web3-validator/function/isUint8Array)
+- [isUserEthereumAddressInBloom](https://docs.web3js.org/api/web3-validator/function/isUserEthereumAddressInBloom)
+- [isValidEthBaseType](https://docs.web3js.org/api/web3-validator/function/isValidEthBaseType)
+- [validateNoLeadingZeroes](https://docs.web3js.org/api/web3-validator/function/validateNoLeadingZeroes)
+
+<br><br>
+<br><br>
+
+# isAddress
+- https://docs.web3js.org/api/web3-validator/function/isAddress
+```javascript
+import { isAddress } from 'web3-validator';
+const check = isAddress('0x1eF800xxxxxx'); // return false
+console.log(check)
+```
+
+</details>
+
+
+
