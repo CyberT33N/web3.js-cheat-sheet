@@ -961,6 +961,14 @@ async function getTokenDetails() {
 
 getTokenDetails();
 ```
+- Decimals (Dezimalstellen): Die Anzahl der Dezimalstellen, die verwendet werden, um den Token-Betrag darzustellen. Im Code ist es als 18n definiert, was darauf hinweist, dass dieser Token 18 Dezimalstellen unterstützt, was typisch für viele ERC-20 Tokens ist.
+
+- TotalSupply (Gesamtangebot): Die Gesamtmenge des Tokens, die im Umlauf ist. Im Beispiel ist es als 1000000000000000000000000000n definiert. Das Suffix n steht für eine BigInt-Zahl in JavaScript, was bedeutet, dass es sich um eine sehr große Ganzzahl handelt. In diesem Fall repräsentiert es eine Gesamtversorgung von 1 Trillion Einheiten des Tokens.
+
+
+
+
+
 </details>
 
 
